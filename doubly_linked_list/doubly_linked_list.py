@@ -68,7 +68,14 @@ class DoublyLinkedList:
             return head.value
 
     def add_to_tail(self, value):
-        pass
+        current_tail = self.tail
+        if not current_tail:
+            new_node = ListNode(value)
+            self.head = new_node
+            self.tail = new_node
+        else:
+            current_tail.insert_after(value)
+            self.tail = current_tail.next
 
     def remove_from_tail(self):
         pass
