@@ -1,3 +1,8 @@
+# Left child: 2i + 1
+# Right child: 2i + 2
+# Parent: (i - 1) // 2
+
+
 class Heap:
     def __init__(self):
         self.storage = []
@@ -15,7 +20,20 @@ class Heap:
         return len(self.storage)
 
     def _bubble_up(self, index):
-        pass
+        storage = self.storage
+
+        if index == 0:
+            return
+
+        if storage[(index - 1) // 2] > storage[index]:
+            return
+        elif storage[(index - 1) // 2] < storage[index]:
+            storage[(index - 1) // 2], storage[index] = (
+                storage[index],
+                storage[(index - 1) // 2],
+            )
+
+        return self._bubble_up((index - 1) // 2)
 
     def _sift_down(self, index):
         pass
