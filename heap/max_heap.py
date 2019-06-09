@@ -8,7 +8,8 @@ class Heap:
         self.storage = []
 
     def insert(self, value):
-        pass
+        self.storage.append(value)
+        return self._bubble_up(self.get_size() - 1)
 
     def delete(self):
         pass
