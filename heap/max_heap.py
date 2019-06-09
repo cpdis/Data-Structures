@@ -9,10 +9,21 @@ class Heap:
 
     def insert(self, value):
         self.storage.append(value)
+
         return self._bubble_up(self.get_size() - 1)
 
     def delete(self):
-        pass
+        storage = self.storage
+
+        storage[0], storage[self.get_size() - 1] = (
+            storage[self.get_size() - 1],
+            storage[0],
+        )
+
+        pop = storage.pop()
+        self._sift_down(0)
+
+        return pop
 
     def get_max(self):
         return self.storage[0]
