@@ -36,4 +36,23 @@ class Heap:
         return self._bubble_up((index - 1) // 2)
 
     def _sift_down(self, index):
-        pass
+        storage = self.storage
+        max_child_index = None
+
+        if index * 2 + 1 > self.get_size():
+            return
+        elif index * 2 + 2 >= self.get_size():
+            max_child_index = index * 2 + 1
+        elif storage[index * 2 + 1] > storage[index * 2 + 2]:
+            max_child_index = index * 2 + 1
+        else:
+            max_child_index = index * 2 + 2
+
+        if storage[index] < storage[max_child_index]:
+            storage[index], storage[max_child_index] = (
+                storage[max_child_index],
+                storage[index],
+            )
+            self._sift_down(max_child_index)
+        else:
+            return
